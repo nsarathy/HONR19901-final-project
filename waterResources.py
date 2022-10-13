@@ -90,7 +90,7 @@ headings = data.columns.tolist()
 year_water = data.values.tolist()
 
 waterLevels("Water Resource levels", "Years", "Water in billion cubic meters")
-plt.show()
+# plt.show()
 
 # Reading csv file with data on Syria's water demand
 data = pd.read_csv("water-demand.csv")
@@ -101,7 +101,7 @@ year_water = data.values.tolist()
 waterDemand("Water Demand levels", "Years", "Water in billion cubic meters")
 
 # un-comment following lines if combined graph; and comment line 93
-# plt.title("")
-# plt.legend(loc="upper left")
+plt.title("")
+plt.legend(loc="upper left")
 
 plt.show()

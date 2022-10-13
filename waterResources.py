@@ -10,7 +10,7 @@ def waterLevels(title, x_label, y_label):
     # Separating year and water levels to separate lists
     year0 = []
     water_level0 = []
-    futureYearExc = [2022, 2026, 2030]
+    future_years = [2022, 2026, 2030]
     for row in year_water:
         year0.append(row[0])
         water_level0.append(row[1])
@@ -31,15 +31,15 @@ def waterLevels(title, x_label, y_label):
         year.append(i)
         water_level.append(myfunc(i))
 
-    predictions = list(map(myfunc, futureYearExc))
+    predictions = list(map(myfunc, future_years))
 
     # plt.plot(futureYearInc, extendedLineOfBestFit, color='#054a0d')
-    plt.scatter(futureYearExc, predictions, color='#00c0ff')
+    plt.scatter(future_years, predictions, color='#00c0ff')
 
     # labelling predictions
-    for i in range(0, len(futureYearExc)):
-        label = "(" + str(round(futureYearExc[i], 2)) + ", " + str(round(predictions[i], 2)) + ")"
-        plt.annotate(label, (futureYearExc[i], predictions[i]))
+    for i in range(0, len(future_years)):
+        label = "(" + str(round(future_years[i], 2)) + ", " + str(round(predictions[i], 2)) + ")"
+        plt.annotate(label, (future_years[i], predictions[i]))
 
     plt.xlabel(x_label)
     plt.ylabel(y_label)
@@ -49,7 +49,7 @@ def waterLevels(title, x_label, y_label):
 def waterDemand(title, x_label, y_label):
     year1 = []
     water_level1 = []
-    futureYearExc = [2022, 2026, 2030]
+    future_years = [2022, 2026, 2030]
     for row in year_water:
         year1.append(row[0])
         water_level1.append(row[1])
@@ -68,15 +68,15 @@ def waterDemand(title, x_label, y_label):
     def myfunc(x):
         return slope * x + intercept
 
-    predictions = list(map(myfunc, futureYearExc))
+    predictions = list(map(myfunc, future_years))
 
     # plt.plot(futureYearInc, extendedLineOfBestFit, color='#054a0d')
-    plt.scatter(futureYearExc, predictions, color='#66ddc0')
+    plt.scatter(future_years, predictions, color='#66ddc0')
 
     # labelling predictions
-    for i in range(0, len(futureYearExc)):
-        label = "(" + str(round(futureYearExc[i], 2)) + ", " + str(round(predictions[i], 2)) + ")"
-        plt.annotate(label, (futureYearExc[i], predictions[i]))
+    for i in range(0, len(future_years)):
+        label = "(" + str(round(future_years[i], 2)) + ", " + str(round(predictions[i], 2)) + ")"
+        plt.annotate(label, (future_years[i], predictions[i]))
 
     plt.xlabel(x_label)
     plt.ylabel(y_label)
@@ -90,7 +90,7 @@ headings = data.columns.tolist()
 year_water = data.values.tolist()
 
 waterLevels("Water Resource levels", "Years", "Water in billion cubic meters")
-# plt.show()
+plt.show()
 
 # Reading csv file with data on Syria's water demand
 data = pd.read_csv("water-demand.csv")
@@ -101,7 +101,7 @@ year_water = data.values.tolist()
 waterDemand("Water Demand levels", "Years", "Water in billion cubic meters")
 
 # un-comment following lines if combined graph; and comment line 93
-plt.title("")
-plt.legend(loc="upper left")
+# plt.title("")
+# plt.legend(loc="upper left")
 
 plt.show()

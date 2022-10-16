@@ -23,10 +23,6 @@ def waterLevels(title, x_label, y_label):
     def myfunc(x):
         return slope * x + intercept
 
-    # lineOfBestFit = list(map(myfunc, year))
-
-    # plt.plot(year, lineOfBestFit, color='#01c243')
-
     for i in range(1962, 2019):
         year.append(i)
         water_level.append(myfunc(i))
@@ -54,15 +50,11 @@ def waterUsage(title, x_label, y_label):
         year1.append(row[0])
         water_level1.append(row[1])
 
-    index = 0
-    for i in water_level1:
-        j = year.index(year1[index])
-        water_level1[index] = water_level[j] * (water_level1[index] / 100.0)
-        index = index + 1
+    plt.scatter(year1, water_level1, color='#66ddc0', label="Freshwater Withdrawals in billion cubic meters")
 
-    plt.scatter(year1, water_level1, color='#66ddc0', label="Freshwater Withdrawals")
+    slope, intercept, r, p, std_err = stats.linregress(year1[5:], water_level1[5:])
 
-    slope, intercept, r, p, std_err = stats.linregress(year1, water_level1)
+    # critical point (2002, 16.4)
 
     # function of the line of best fit
     def myfunc(x):
@@ -90,18 +82,13 @@ headings = data.columns.tolist()
 year_water = data.values.tolist()
 
 waterLevels("Freshwater Resource availability per capita", "Years", "cubic meters")
-# plt.show()
+plt.show()
 
 # Reading csv file with data on Syria's water Usage
-data = pd.read_csv("water-usage.csv")
+data = pd.read_csv("water-withdrawal.csv")
 headings = data.columns.tolist()
 # Converting data to manipulable list
 year_water = data.values.tolist()
 
-waterUsage("Water Usage levels", "Years", "Water in billion cubic meters")
-
-# un-comment following lines if combined graph; and comment line 93
-plt.title("")
-plt.legend(loc="upper left")
-
+waterUsage("Freshwater Withdrawals", "Years", "Water in billion cubic meters")
 plt.show()

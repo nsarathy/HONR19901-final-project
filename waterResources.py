@@ -46,7 +46,7 @@ def waterLevels(title, x_label, y_label):
     plt.title(title)
 
 
-def waterDemand(title, x_label, y_label):
+def waterUsage(title, x_label, y_label):
     year1 = []
     water_level1 = []
     future_years = [2022, 2026, 2030]
@@ -60,7 +60,7 @@ def waterDemand(title, x_label, y_label):
         water_level1[index] = water_level[j] * (water_level1[index] / 100.0)
         index = index + 1
 
-    plt.scatter(year1, water_level1, color='#66ddc0', label="Water Demand levels")
+    plt.scatter(year1, water_level1, color='#66ddc0', label="Water Usage levels")
 
     slope, intercept, r, p, std_err = stats.linregress(year1, water_level1)
 
@@ -92,13 +92,13 @@ year_water = data.values.tolist()
 waterLevels("Water Resource levels", "Years", "Water in billion cubic meters")
 # plt.show()
 
-# Reading csv file with data on Syria's water demand
-data = pd.read_csv("water-demand.csv")
+# Reading csv file with data on Syria's water Usage
+data = pd.read_csv("water-usage.csv")
 headings = data.columns.tolist()
 # Converting data to manipulable list
 year_water = data.values.tolist()
 
-waterDemand("Water Demand levels", "Years", "Water in billion cubic meters")
+waterUsage("Water Usage levels", "Years", "Water in billion cubic meters")
 
 # un-comment following lines if combined graph; and comment line 93
 plt.title("")

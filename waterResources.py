@@ -90,5 +90,5 @@ headings = data.columns.tolist()
 # Converting data to manipulable list
 year_water = data.values.tolist()
 
-waterUsage("Freshwater Withdrawals", "Years", "Water in billion cubic meters")
+waterUsage("Freshwater Withdrawals(Agriculture, Industry, Domestic)", "Years", "Water in billion cubic meters")
 plt.show()

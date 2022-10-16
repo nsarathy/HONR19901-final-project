@@ -15,7 +15,7 @@ def waterLevels(title, x_label, y_label):
         year0.append(row[0])
         water_level0.append(row[1])
 
-    plt.scatter(year0, water_level0, color='#00c0ff', label="Water Resource levels")
+    plt.scatter(year0, water_level0, color='#00c0ff', label="Freshwater Resource availability per capita")
 
     slope, intercept, r, p, std_err = stats.linregress(year0, water_level0)
 
@@ -60,7 +60,7 @@ def waterUsage(title, x_label, y_label):
         water_level1[index] = water_level[j] * (water_level1[index] / 100.0)
         index = index + 1
 
-    plt.scatter(year1, water_level1, color='#66ddc0', label="Water Usage levels")
+    plt.scatter(year1, water_level1, color='#66ddc0', label="Freshwater Withdrawals")
 
     slope, intercept, r, p, std_err = stats.linregress(year1, water_level1)
 
@@ -89,7 +89,7 @@ headings = data.columns.tolist()
 # Converting data to manipulable list
 year_water = data.values.tolist()
 
-waterLevels("Water Resource levels", "Years", "Water in billion cubic meters")
+waterLevels("Freshwater Resource availability per capita", "Years", "cubic meters")
 # plt.show()
 
 # Reading csv file with data on Syria's water Usage
